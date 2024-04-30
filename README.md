@@ -34,11 +34,54 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">StrikeList</h3>
 
   <p align="center">
-    project_description
-    <br />
+    StrikeList is a simple to-do list app that helps you get things done!
+
+<h3>Features:</h3
+
+**Task Creation:**
+* Users can easily add new tasks with titles and descriptions.
+* Option to set deadlines for tasks (date and/or time).
+
+<br/>
+
+**Task Prioritization:**
+* Implement a system for users to prioritize tasks (e.g., high, medium, low).
+* This can be achieved with different colored labels or a drag-and-drop functionality.
+
+<br/>
+
+**Task Management:**
+* Users can mark tasks as completed to track their progress.
+* Include an option to edit existing tasks (title, description, deadline, priority).
+
+<br/>
+
+**Offline Functionality:**
+* All data (tasks, deadlines, priorities) is stored locally on the device.
+* This ensures the app functions even without an internet connection.
+
+<br/>
+
+**Optional Features (for future development | PAID ??):**
+* Recurring tasks: Allow users to set tasks that repeat daily, weekly, or monthly.
+* Subtasks: Enable users to break down large tasks into smaller, more manageable steps.
+* Notifications: Implement reminders for upcoming tasks with customizable alerts.
+* Categorization: Allow users to categorize tasks (e.g., work, personal, errands) for better organization.
+
+<br/>
+
+<h3>Benefits:</h3>
+
+ **Improved personal productivity and time management.**
+
+ **Reduced stress and feelings of overwhelm from remembering tasks.**
+
+ **Clear visualization of progress towards goals.**
+
+<br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
     <br />
@@ -95,7 +138,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
+* [![ReactNative.js][ReactNative.js]][ReactNative-url]
 * [![Angular][Angular.io]][Angular-url]
 * [![Svelte][Svelte.dev]][Svelte-url]
 * [![Laravel][Laravel.com]][Laravel-url]
@@ -233,6 +276,8 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[ReactNative.js]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[ReactNative-url]: https://reactnative.dev/
 [Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
 [Vue-url]: https://vuejs.org/
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
