@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from "react";
 import { View, SectionList, Text, StyleSheet } from "react-native";
+import NewToDo from './NewToDo';
 
 export default TaskList = () => {
+  const [sections, setSections] = useState([
+    { title: "Work", data: ["Devin", "Dan", "Dominic"] },
+    { title: "Personal", data: ["Devin", "Dan", "Dominic"] },
+    { title: "Hobbies", data: ["Devin", "Dan", "Dominic"] },
+  ]);
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -17,12 +24,15 @@ export default TaskList = () => {
     },
   });
 
-
-  const sections = [
-    { title: "Work", data: ['Devin', 'Dan', 'Dominic'] },
-    { title: "Personal", data: ['Devin', 'Dan', 'Dominic'] },
-    { title: "Hobbies", data: ['Devin', 'Dan', 'Dominic'] },
-  ];
+  onCreateNewTodo = (newToDo) => {
+    setSections([
+      ...sections,
+      {
+        title: "newTodo",
+        data: [newToDo],
+      },
+    ]);
+  };
 
   return (
     <View>
@@ -35,6 +45,7 @@ export default TaskList = () => {
         )}
         keyExtractor={(item) => `basicListEntry-${item}`}
       />
-      </View>
+      <NewToDo onCreateNewTodo={onCreateNewTodo} />
+    </View>
   );
 };
