@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import Animated, {
-  ZoomIn,
-  ZoomOut,
-} from "react-native-reanimated";
+import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
 import { TextInput, StyleSheet, View, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 export default NewToDo = (props) => {
   const [text, setText] = useState("");
-  const style = StyleSheet.create({
+  const styles = StyleSheet.create({
     input: {
       height: 50,
       backgroundColor: "#EDEDED",
@@ -17,7 +14,10 @@ export default NewToDo = (props) => {
       padding: 15,
       color: "black",
     },
-    button: {
+    inputView: {
+      flex: 1,
+    },
+    submitButton: {
       borderRadius: 50,
       height: 30,
       backgroundColor: "black",
@@ -25,45 +25,44 @@ export default NewToDo = (props) => {
       paddingTop: 3,
       width: 30,
     },
-    buttonView: {
+    submitButtonView: {
       marginTop: -40,
       marginLeft: "auto",
       marginRight: 15,
     },
   });
 
-  onCreateNewTodo = () =>{
+  onCreateNewTodo = () => {
     props.onCreateNewTodo(text);
     setText("");
-  }
-
+  };
 
   return (
-    <View>
-      <View>
+    <View style={{ flexDirection: "row" }}>
+      <View style={styles.inputView}>
         <TextInput
-          style={style.input}
+          style={styles.input}
           onChangeText={setText}
+          onSubmitEditing={() => onCreateNewTodo()}
           value={text}
           placeholder="Type a new reminder..."
           placeholderTextColor="#939292"
         />
-      </View>
-      {text ? (
-        <Animated.View
-          style={style.buttonView}
-          entering={ZoomIn.springify(200)}
-          exiting={ZoomOut.springify(200)}
-          
-        >
-          <Pressable
-            style={style.button}
-            onPress={()=>onCreateNewTodo()}
+        {text ? (
+          <Animated.View
+            style={styles.submitButtonView}
+            entering={ZoomIn.springify(300)}
+            exiting={ZoomOut.springify(300)}
           >
-            <AntDesign name="arrowright" size={24} color="#EDEDED" />
-          </Pressable>
-        </Animated.View>
-      ) : null}
+            <Pressable
+              style={styles.submitButton}
+              onPress={() => onCreateNewTodo()}
+            >
+              <AntDesign name="arrowright" size={24} color="#EDEDED" />
+            </Pressable>
+          </Animated.View>
+        ) : null}
+      </View>
     </View>
   );
 };

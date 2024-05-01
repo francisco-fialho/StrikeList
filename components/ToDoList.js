@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, SectionList, Text, StyleSheet } from "react-native";
-import NewToDo from './NewToDo';
+import NewToDo from "./NewToDo";
 
-export default TaskList = () => {
+export default ToDoList = () => {
   const [sections, setSections] = useState([
     { title: "Work", data: ["Devin", "Dan", "Dominic"] },
     { title: "Personal", data: ["Devin", "Dan", "Dominic"] },
@@ -12,6 +12,7 @@ export default TaskList = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
+      flexDirection: "column",
     },
     sectionHeader: {
       fontSize: 14,
@@ -21,6 +22,16 @@ export default TaskList = () => {
     item: {
       fontSize: 18,
       height: 44,
+      padding: 10,
+      marginVertical: 5,
+    },
+    list: {
+      flex: 15,
+      marginBottom:20,
+    },
+    input: {
+      flex: 1,
+      marginBottom: 30,
     },
   });
 
@@ -35,17 +46,20 @@ export default TaskList = () => {
   };
 
   return (
-    <View>
-      <Text>Scroll me plz</Text>
-      <SectionList
-        sections={sections}
-        renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-        renderSectionHeader={({ section }) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
-        )}
-        keyExtractor={(item) => `basicListEntry-${item}`}
-      />
-      <NewToDo onCreateNewTodo={onCreateNewTodo} />
+    <View style={styles.container}>
+      <View style={styles.list}>
+        <SectionList
+          sections={sections}
+          renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+          renderSectionHeader={({ section }) => (
+            <Text style={styles.sectionHeader}>{section.title}</Text>
+          )}
+          keyExtractor={(item) => `basicListEntry-${item}`}
+        />
+      </View>
+      <View style={styles.input}>
+        <NewToDo onCreateNewTodo={onCreateNewTodo} />
+      </View>
     </View>
   );
 };
