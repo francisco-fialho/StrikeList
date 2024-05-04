@@ -5,7 +5,7 @@ import EmojiPicker from "react-native-emoji-picker-staltz";
 import ToDoList from "../components/ToDoList";
 import { AntDesign } from "@expo/vector-icons";
 
-export default ListView = ({ item }) => {
+export default ListView = ({ list }) => {
   const { width } = useWindowDimensions();
   const [emoji, setEmoji] = useState("📝");
   const [openModal, setOpenModal] = useState(false);
@@ -50,7 +50,7 @@ export default ListView = ({ item }) => {
   };
 
   return (
-    <View key={item.id} style={{ width }}>
+    <View key={list.id} style={{ width: width - 20 }}>
       <Pressable
         onPress={() => setOpenModal(!openModal)}
         style={styles.chooseEmoji}
@@ -74,7 +74,7 @@ export default ListView = ({ item }) => {
       </Pressable>
       <View style={{ flexDirection: "row" }}>
         <View style={styles.titleView}>
-          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.title}>{list.title}</Text>
         </View>
         <View style={styles.submitButtonView}>
           <Pressable
@@ -86,7 +86,7 @@ export default ListView = ({ item }) => {
         </View>
       </View>
       <View style={{ flexDirection: "column", flex: 1 }}>
-        <ToDoList list={item.data} />
+        <ToDoList list={list.items} />
       </View>
     </View>
   );

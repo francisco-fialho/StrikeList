@@ -20,18 +20,25 @@ import NewToDo from "../components/NewToDo";
 import ListView from "./ListView";
 
 export default ScrollableListView = () => {
+  const [currentPage, setCurrentPage] = useState(0);
 
   const [lists, setLists] = useState([
-    {id: 1,  title: "Work", data: ["Devin", "Dan", "Dominic"] },
-    {id: 2, title: "Personal", data: ["Devin", "Dan", "Dominic"] },
+    { id: 1, title: "Work", items: ["Devin", "Dan", "Dominic"] },
+    { id: 2, title: "Personal", items: ["Devin", "Dan", "Dominic"] },
   ]);
-
 
   const onCreateNewSection = () => {
     setLists([
       ...lists,
       { id: lists.length + 1, title: "Title" + (lists.length + 1) },
     ]);
+  };
+
+  const onCreateNewTodo = (text) => {
+    let newLists = lists;
+    let updatedList = newLists.find((item) => item.id == currentPage);
+    updatedList.items.push(text);
+    setLists(newLists);
   };
 
   const styles = StyleSheet.create({
@@ -45,9 +52,13 @@ export default ScrollableListView = () => {
   });
 
   const renderList = ({ item }) => {
-    return (
-      <ListView item={item} />
-    );
+    return <ListView list={item} />;
+  };
+
+  const onChangePage = (changedPage) => {
+    if (changedPage.length === 1) {
+      setCurrentPage(changedPage[0].key);
+    }
   };
 
   return (
@@ -69,12 +80,13 @@ export default ScrollableListView = () => {
             renderItem={renderList}
             keyExtractor={(item) => item.id}
             snapToAlignment={"start"}
-            decelerationRate={0}
+            onViewableItemsChanged={({ viewableItems }) =>
+              onChangePage(viewableItems)
+            }
             pagingEnabled
-            
           />
         </TouchableWithoutFeedback>
-        <NewToDo />
+        <NewToDo onCreateNewTodo={onCreateNewTodo} />
         <StatusBar style="auto" />
       </SafeAreaView>
     </KeyboardAvoidingView>

@@ -16,6 +16,7 @@ export default NewToDo = (props) => {
     },
     inputView: {
       flex: 1,
+      justifyContent: "center"
     },
     submitButton: {
       borderRadius: 50,
