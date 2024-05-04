@@ -41,45 +41,60 @@
 
 <h3>Features:</h3
 
-**Task Creation:**
-* Users can easily add new tasks with titles and descriptions.
-* Option to set deadlines for tasks (date and/or time).
+
+---
+> **Task Creation:**
+>  
+> Users can easily add new tasks with titles and descriptions.
+>
+> Option to set deadlines for tasks (date and/or time).
 
 <br/>
 
-**Task Prioritization:**
-* Implement a system for users to prioritize tasks (e.g., high, medium, low).
-* This can be achieved with different colored labels or a drag-and-drop functionality.
+> **Task Prioritization:**
+>
+> Implement a system for users to prioritize tasks (e.g., high, medium, low).
+>
+>This can be achieved with different colored labels or a drag-and-drop functionality.
 
 <br/>
 
-**Task Management:**
-* Users can mark tasks as completed to track their progress.
-* Include an option to edit existing tasks (title, description, deadline, priority).
+> **Task Management:**
+>
+> Users can mark tasks as completed to track their progress.
+>
+> Include an option to edit existing tasks (title, description, deadline, priority).
 
 <br/>
 
-**Offline Functionality:**
-* All data (tasks, deadlines, priorities) is stored locally on the device.
-* This ensures the app functions even without an internet connection.
+> **Offline Functionality:**
+>
+> All data (tasks, deadlines, priorities) is stored locally on the device.
+>
+> This ensures the app functions even without an internet connection.
 
 <br/>
 
-**Optional Features (for future development | PAID ??):**
-* Recurring tasks: Allow users to set tasks that repeat daily, weekly, or monthly.
-* Subtasks: Enable users to break down large tasks into smaller, more manageable steps.
-* Notifications: Implement reminders for upcoming tasks with customizable alerts.
-* Categorization: Allow users to categorize tasks (e.g., work, personal, errands) for better organization.
+> **Optional Features (for future development | PAID ??):**
+>
+> Recurring tasks: Allow users to set tasks that repeat daily, weekly, or monthly.
+>
+> Subtasks: Enable users to break down large tasks into smaller, more manageable steps.
+>
+> Notifications: Implement reminders for upcoming tasks with customizable alerts.
+>
+> Categorization: Allow users to categorize tasks (e.g., work, personal, errands) for better organization.
 
 <br/>
+
 
 <h3>Benefits:</h3>
 
- **Improved personal productivity and time management.**
+> **Improved personal productivity and time management.**
 
- **Reduced stress and feelings of overwhelm from remembering tasks.**
+> **Reduced stress and feelings of overwhelm from remembering tasks.**
 
- **Clear visualization of progress towards goals.**
+> **Clear visualization of progress towards goals.**
 
 <br />
     <a href="https://github.com/francisco-fialho/StrikeList"><strong>Explore the docs »</strong></a>
@@ -136,8 +151,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-* [![React][React.js]][React-url]
-* [![ReactNative.js][ReactNative.js]][ReactNative-url]
+ [![React][React.js]][React-url]
+
+ [![ReactNative.js][ReactNative.js]][ReactNative-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
