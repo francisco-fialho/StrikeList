@@ -1,31 +1,16 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Platform,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-  KeyboardAvoidingView,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Dimensions,
-} from "react-native";
+import { useWindowDimensions } from "react-native";
+import { Pressable, Text, View, Modal } from "react-native";
+import { useState } from "react";
+import EmojiPicker from "react-native-emoji-picker-staltz";
 import ToDoList from "../components/ToDoList";
 import { AntDesign } from "@expo/vector-icons";
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 
-export default ListView = () => {
-  const styles = StyleSheet.create({
-    container: {
-      backgroundColor: "#fff",
-      flex: 1,
-      backgroundColor: "white",
-      flexDirection: "column",
-      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      padding: 10,
-    },
+export default ListView = ({ item }) => {
+  const { width } = useWindowDimensions();
+  const [emoji, setEmoji] = useState("📝");
+  const [openModal, setOpenModal] = useState(false);
+
+  const styles = {
     addSectionButton: {
       backgroundColor: "#EDEDED",
       borderRadius: 10,
@@ -41,59 +26,68 @@ export default ListView = () => {
       flexDirection: "column",
       padding: 2,
     },
-  });
+    title: {
+      textAlign: "center",
+      fontSize: 30,
+    },
+    emoji: {
+      fontSize: 50,
+      textAlign: "center",
+    },
+    chooseEmoji: {
+      backgroundColor: "lightgrey",
+      borderRadius: 50,
+      width: 100,
+      height: 100,
+      justifyContent: "center",
+      alignSelf: "center",
+    },
+  };
 
-  const [lists, setLists] = useState([{ id: 1, title: "Title1" },{ id: 2, title: "Title2" }]);
-
-  const onCreateNewSection = ()=>{
-    setLists([...lists, {id: lists.length+1, title: 'Title' + (lists.length + 1)}])
-  }
-
-  const renderList = () => {
-    return lists.map((elem) => {
-      return (
-        <View style={{ width: Dimensions.get('screen').width}} key={elem.id}>
-          <View style={{ flexDirection: "row"}}>
-            <View style={styles.titleView}>
-              <Text style={{ fontSize: 30 }}>{elem.title}</Text>
-            </View>
-            <View style={styles.submitButtonView}>
-              <Pressable
-                style={styles.addSectionButton}
-                onPress={() => onCreateNewSection()}
-              >
-                <AntDesign name="plus" size={30} color="black" />
-              </Pressable>
-            </View>
-          </View>
-          <View style={{ flexDirection: "column", flex: 1 }}>
-            <ToDoList />
-            <StatusBar style="auto" />
-          </View>
-        </View>
-      );
-    });
+  const selectEmoji = (emoji) => {
+    setEmoji(emoji);
+    setOpenModal(false);
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.select({
-        ios: () => 0,
-        android: () => -200,
-      })()}
-      style={styles.container}
-    >
-      <SafeAreaView style={styles.container}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <ScrollView
-            horizontal
-            contentContainerStyle={{ flexGrow: 1, flexDirection: "row"}}
+    <View key={item.id} style={{ width }}>
+      <Pressable
+        onPress={() => setOpenModal(!openModal)}
+        style={styles.chooseEmoji}
+      >
+        <Text style={styles.emoji}>{emoji}</Text>
+        <Modal visible={openModal} transparent={true} animationType="fade">
+          <EmojiPicker
+            onEmojiSelected={selectEmoji}
+            rows={5}
+            onPressOutside={() => setOpenModal(false)}
+            emojiSize={35}
+            hideClearButton
+            modalStyle={{
+              flexGrow: 1,
+              justifyContent: "flex-end",
+              marginBottom: 15,
+            }}
+            containerStyle={{ horizontal: false }}
+          />
+        </Modal>
+      </Pressable>
+      <View style={{ flexDirection: "row" }}>
+        <View style={styles.titleView}>
+          <Text style={styles.title}>{item.title}</Text>
+        </View>
+        <View style={styles.submitButtonView}>
+          <Pressable
+            style={styles.addSectionButton}
+            onPress={() => onCreateNewSection()}
           >
-            {renderList()}
-          </ScrollView>
-        </TouchableWithoutFeedback>
-      </SafeAreaView>
-    </KeyboardAvoidingView>
+            <AntDesign name="plus" size={30} color="black" />
+          </Pressable>
+        </View>
+      </View>
+      <View style={{ flexDirection: "column", flex: 1 }}>
+        <ToDoList list={item.data} />
+      </View>
+    </View>
   );
 };

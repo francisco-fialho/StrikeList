@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-import { View, SectionList, Text, StyleSheet } from "react-native";
+import { View, SectionList, Text, StyleSheet, FlatList } from "react-native";
 import NewToDo from "./NewToDo";
 
-export default ToDoList = () => {
-  const [sections, setSections] = useState([
-    { title: "Work", data: ["Devin", "Dan", "Dominic"] },
-    { title: "Personal", data: ["Devin", "Dan", "Dominic"] },
-    { title: "Hobbies", data: ["Devin", "Dan", "Dominic"] },
-  ]);
+export default ToDoList = ({list}) => {
+  
 
   const styles = StyleSheet.create({
     container: {
@@ -27,7 +23,7 @@ export default ToDoList = () => {
     },
     list: {
       flex: 15,
-      marginBottom:20,
+      marginBottom: 20,
     },
     input: {
       flex: 1,
@@ -48,8 +44,8 @@ export default ToDoList = () => {
   return (
     <View style={styles.container}>
       <View style={styles.list}>
-        <SectionList
-          sections={sections}
+        <FlatList
+          data={list}
           renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
           renderSectionHeader={({ section }) => (
             <Text style={styles.sectionHeader}>{section.title}</Text>
@@ -58,7 +54,9 @@ export default ToDoList = () => {
         />
       </View>
       <View style={styles.input}>
-        <NewToDo onCreateNewTodo={onCreateNewTodo} />
+        {
+          //<NewToDo onCreateNewTodo={onCreateNewTodo} />
+        }
       </View>
     </View>
   );

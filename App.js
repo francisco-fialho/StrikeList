@@ -1,5 +1,5 @@
-import ListView from "./views/ListView";
+import ScrollableListView from "./views/ScrollableListView";
 
 export default function App() {
-  return <ListView />;
+  return <ScrollableListView />;
 }
