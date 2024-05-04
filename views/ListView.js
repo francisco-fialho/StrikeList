@@ -1,4 +1,4 @@
-import { useWindowDimensions } from "react-native";
+import { Alert, useWindowDimensions } from "react-native";
 import { Pressable, Text, View, Modal } from "react-native";
 import { useState } from "react";
 import EmojiPicker from "react-native-emoji-picker-staltz";
@@ -48,6 +48,10 @@ export default ListView = ({ list }) => {
     setEmoji(emoji);
     setOpenModal(false);
   };
+
+  const onCreateNewSection = () =>{
+    Alert.alert("Not implemented yet 😔")
+  }
 
   return (
     <View key={list.id} style={{ width: width - 20 }}>

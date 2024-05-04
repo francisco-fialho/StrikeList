@@ -27,12 +27,6 @@ export default ScrollableListView = () => {
     { id: 2, title: "Personal", items: ["Devin", "Dan", "Dominic"] },
   ]);
 
-  const onCreateNewSection = () => {
-    setLists([
-      ...lists,
-      { id: lists.length + 1, title: "Title" + (lists.length + 1) },
-    ]);
-  };
 
   const onCreateNewTodo = (text) => {
     let newLists = lists;
